@@ -33,6 +33,15 @@ def conexão_ftp(ip):
         cmd = tcp.recv(2048).decode('utf-8')
         print(f"{GREEN}{cmd}{RESET}")
 
+        tcp.close()
+    except Exception as e:
+        print(f"{RED}Erro ao conectar ao servidor FTP: {e}{RESET}")
 
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="FTP")
+    parser.add_argument("ip", help="Endereço IP do servidor FTP")
+    args = parser.parse_args()
+
+    ftp_connect(args.ip)
 
 
